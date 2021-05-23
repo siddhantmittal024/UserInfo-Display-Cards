@@ -1,4 +1,4 @@
-import { Box, Flex, Stack } from '@chakra-ui/layout';
+import { Box, Stack } from '@chakra-ui/layout';
 
 const Card = ({ user, selected, setSelected }) => {
   const handleClick = () => {

@@ -1,4 +1,4 @@
-import { Box, Grid } from '@chakra-ui/layout';
+import { Grid } from '@chakra-ui/layout';
 import React, { useState, useEffect } from 'react';
 import Card from '../Card/Card';
 import axios from 'axios';

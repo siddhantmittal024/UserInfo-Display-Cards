@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, Flex, Button, IconButton } from '@chakra-ui/react';
+import { Flex, Button, IconButton } from '@chakra-ui/react';
 
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
@@ -98,13 +98,13 @@ const NavBar = () => {
 
         <Flex flexDir="column" align="center">
           <Button as="a" variant="ghost" aria-label="Home" my={5} w="100%">
-            Home
+            Product
           </Button>
           <Button as="a" variant="ghost" aria-label="About" my={5} w="100%">
-            About
+            Download
           </Button>
           <Button as="a" variant="ghost" aria-label="Contact" my={5} w="100%">
-            Contact
+            Pricing
           </Button>
         </Flex>
       </Flex>
