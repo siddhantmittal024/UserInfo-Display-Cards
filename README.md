@@ -1,4 +1,4 @@
-HOSTED THE WEBSITE at : https://usercard-display.netlify.app/
+DEPLOYED THE WEBSITE at : https://usercard-display.netlify.app/
 
 # Getting Started with Create React App
 
