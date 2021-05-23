@@ -2,9 +2,11 @@ import { Box, Grid } from '@chakra-ui/layout';
 import React, { useState, useEffect } from 'react';
 import Card from '../Card/Card';
 import axios from 'axios';
+import Banner from '../Banner/Banner';
 
 const HomePage = () => {
-  const [users, getUsers] = useState('');
+  const [users, setUsersList] = useState([]);
+  const [selectedEmail, setSelectedEmail] = useState('');
 
   useEffect(() => {
     getAllUsers();
@@ -18,21 +20,33 @@ const HomePage = () => {
       .then((res) => {
         //console.log(res.data.results);
         const allUsers = res.data.results;
-        getUsers(allUsers);
+        setUsersList(allUsers);
       })
       .catch((err) => console.error(`Error:${err}`));
   };
+
   return (
-    <Grid
-      templateColumns={[
-        'repeat(1, 1fr)',
-        'repeat(2, 1fr)',
-        'repeat(2, 1fr)',
-        'repeat(4, 1fr)'
-      ]}
-    >
-      <Card users={users} />
-    </Grid>
+    <>
+      <Banner user={users.find((user) => user.email === selectedEmail)} />
+      <Grid
+        templateColumns={[
+          'repeat(1, 1fr)',
+          'repeat(2, 1fr)',
+          'repeat(2, 1fr)',
+          'repeat(3, 1fr)',
+          'repeat(4, 1fr)'
+        ]}
+      >
+        {users.map((user) => (
+          <Card
+            key={user.email}
+            user={user}
+            selected={user.email === selectedEmail}
+            setSelected={setSelectedEmail}
+          />
+        ))}
+      </Grid>
+    </>
   );
 };
 

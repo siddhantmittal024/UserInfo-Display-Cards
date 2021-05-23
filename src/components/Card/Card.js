@@ -1,40 +1,36 @@
-import { Button } from '@chakra-ui/button';
 import { Box, Flex, Stack } from '@chakra-ui/layout';
-import React from 'react';
 
-const Card = (props) => {
-  console.log(props.users[0]);
-  if (props.users.length > 0) {
-    return props.users.map((user, index) => {
-      //console.log(user.gender);
-      return (
-        <Box
-          bgColor="white"
-          //width={['90%', '30%', '30%', '22%']}
-          mx="8"
-          my="4"
-          boxShadow="md"
-          borderRadius="sm"
-          key={index}
-          as="button"
-          textAlign="left"
-        >
-          <Stack py="2" spacing="2" mx="3">
-            <Box textTransform="capitalize"> {`${user.gender} - NL`}</Box>
-            <Box fontWeight="700">
-              {' '}
-              {`${user.gender === 'female' ? 'Ms.' : 'Mr'} ${user.name.first} ${
-                user.name.last
-              }`}
-            </Box>
-            <Box color="red.400">{user.email}</Box>
-          </Stack>
+const Card = ({ user, selected, setSelected }) => {
+  const handleClick = () => {
+    setSelected(user.email);
+  };
+
+  return (
+    <Box
+      bgColor={selected ? 'purple.500' : 'white'}
+      mx="8"
+      my="4"
+      boxShadow="md"
+      borderRadius="sm"
+      as="button"
+      textAlign="left"
+      onClick={handleClick}
+    >
+      <Stack py="2" spacing="2" mx="3">
+        <Box textTransform="capitalize" color={selected ? 'white' : 'gray.500'}>
+          {' '}
+          {`${user.gender} - NL`}
         </Box>
-      );
-    });
-  } else {
-    return <Box>NO DATA YET!</Box>;
-  }
+        <Box fontWeight="700" color={selected ? 'white' : 'black'}>
+          {' '}
+          {`${user.gender === 'female' ? 'Ms.' : 'Mr.'} ${user.name.first} ${
+            user.name.last
+          } `}
+        </Box>
+        <Box color={selected ? 'white' : 'red.400'}>{user.email}</Box>
+      </Stack>
+    </Box>
+  );
 };
 
 export default Card;
